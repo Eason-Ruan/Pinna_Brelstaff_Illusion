@@ -1,6 +1,63 @@
-# Pinna & Brelstaff 幻觉图像生成器
+# Pinna-Brelstaff 错觉生成器
 
-这个项目使用Matplotlib复刻了著名的Pinna & Brelstaff视觉幻觉。这种幻觉由Giovanni Pinna和Gavin J. Brelstaff于1994年首次报道，展示了当观察者靠近或远离由倾斜线段组成的同心环图案时会产生旋转的错觉。
+这是一个生成 Pinna-Brelstaff 视觉错觉的 Python 工具。这种错觉在旋转时会产生奇特的视觉感受，静止的同心环在旋转时会产生扭曲感。
+
+## 功能特点
+
+- 生成基于 Pinna-Brelstaff 原理的视觉错觉图像
+- 支持自定义参数（环数、段数、内外半径等）
+- 提供渐变填充选项
+- 高质量图像导出功能
+
+## 安装要求
+
+```
+numpy
+matplotlib
+```
+
+安装依赖包：
+
+```bash
+pip install numpy matplotlib
+```
+
+## 使用方法
+
+```python
+import matplotlib.pyplot as plt
+from pinna_brelstaff_illusion import create_pinna_brelstaff_illusion
+
+# 创建基本的 Pinna-Brelstaff 错觉图像
+fig = create_pinna_brelstaff_illusion(
+    inner_radius=2,
+    outer_radius=2.5,
+    inner_polygon_gradient=False
+)
+
+# 保存图像
+plt.savefig('pinna_brelstaff_illusion.png', dpi=300, bbox_inches='tight')
+
+# 显示图像
+plt.show()
+```
+
+## 参数说明
+
+- `num_rings`：环的数量（默认2）
+- `num_segments`：每个环的线段数量（默认30）
+- `inner_radius`：最内环的半径（默认3.5）
+- `outer_radius`：最外环的半径（默认4.0）
+- `segment_width`：每个线段的宽度(角度)（默认5）
+- `segment_tilt`：线段的倾斜角度(角度)（默认15）
+- `gradient_colors`：渐变填充的颜色，列表形式（默认["#000000", "#808080"]）
+- `inner_polygon_gradient`：是否在单个多边形内部使用渐变填充（默认False）
+
+## Pinna-Brelstaff 错觉原理
+
+Pinna-Brelstaff 错觉是由 Pinna 和 Brelstaff 发现的一种动态视觉错觉。当观察者接近或远离由倾斜线条组成的同心环图案时，静止的图案会产生旋转的错觉。这种现象与人类视觉系统处理运动信息的方式有关。
+
+通过旋转本项目生成的图像，你将能观察到这种奇妙的视觉效果。
 
 ## 幻觉原理
 
@@ -50,16 +107,6 @@ python pinna_brelstaff_animated.py
 1. 固定视线在图像中心
 2. 缓慢向图像靠近或远离
 3. 观察同心环似乎在顺时针或逆时针方向旋转的感觉
-
-## 依赖库
-
-- NumPy
-- Matplotlib
-
-安装依赖:
-```bash
-pip install numpy matplotlib
-```
 
 ## 科学背景
 
